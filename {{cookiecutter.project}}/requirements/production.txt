@@ -1,0 +1,10 @@
+# Production requirements
+{% if cookiecutter.use_postgresql == 'yes' %}
+wheel
+# python setup.py bdist_wheel possibly
+psycopg2-binary
+{% endif %}
+Flask
+flask-sqlalchemy
+flask-migrate
+gunicorn

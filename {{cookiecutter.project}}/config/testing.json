@@ -1,0 +1,13 @@
+{
+{% if cookiecutter.use_postgresql == 'yes' %}
+    "POSTGRES_DB":       "postgres",
+    "POSTGRES_USER":     "postgres",
+    "POSTGRES_HOSTNAME": "localhost",
+    "POSTGRES_PORT":     "5433",
+    "POSTGRES_PASSWORD": "postgres",
+    "APPLICATION_DB":    "test",
+{% endif %}
+    "FLASK_ENV":         "production",
+    "FLASK_CONFIG":      "testing"
+}
+

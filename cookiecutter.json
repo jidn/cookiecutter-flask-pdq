@@ -1,0 +1,14 @@
+{
+    "project_name": "",
+    "copyright_holder": "",
+    "application_directory": "webapp",
+    "use_postgresql": "yes",
+    "license": [
+        "MIT",
+        "BSD",
+        "GPLv3",
+        "Apache Software License 2.0",
+        "Not open source"
+    ],
+    "version": "0.1"
+}

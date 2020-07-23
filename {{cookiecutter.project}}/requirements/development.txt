@@ -1,0 +1,6 @@
+# Development requirements
+
+# Include everything in testing
+-r testing.txt
+
+docker-compose

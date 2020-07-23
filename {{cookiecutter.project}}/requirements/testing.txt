@@ -1,0 +1,9 @@
+# Testing requirements
+
+# Include everything production
+-r production.txt
+
+pytest
+coverage
+pytest-cov
+pytest-flask
