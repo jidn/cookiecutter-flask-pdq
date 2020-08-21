@@ -1,4 +1,4 @@
-from application.models import User
+from {{cookiecutter.application_directory}}.models import User
 
 
 def test__create_user(database):

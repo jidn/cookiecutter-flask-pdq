@@ -8,8 +8,12 @@ import time
 import shutil
 
 import click
+{% if cookiecutter.use_postgresql == 'yes' %}
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+{% else %}
+import sqlite3
+{% endif %}
 
 
 def setenv(variable, default):
@@ -73,6 +77,7 @@ def docker_compose_cmdline(commands_string=None):
 
 def run_sql(statements):
     """Execute SQL statements."""
+{% if cookiecutter.use_postgresql %}
     conn = psycopg2.connect(
         dbname=os.getenv("POSTGRES_DB"),
         user=os.getenv("POSTGRES_USER"),
@@ -86,6 +91,8 @@ def run_sql(statements):
         cursor.execute(statement)
     cursor.close()
     conn.close()
+{% else %}
+{% endif %}
 
 
 def wait_for_logs(cmdline, message):
@@ -124,9 +131,14 @@ def create_initial_db():
     breakpoint()
     try:
         run_sql([f"CREATE DATABASE {os.getenv('APPLICATION_DB')}'"])
+{% if cookiecutter.use_postgresql == 'yes' %}
     except psycopg2.errors.DuplicateDatabase:
         print(f"Database {os.getenv('APPLICATION_DB')} already exists.")
-
+{% else %}
+    except Exception as err:
+        # TODO fix this for sqlite3
+        print(f"Something went wrong. {err}")
+{% endif %}
 
 @cli.command()
 @click.argument("filenames", nargs=-1)

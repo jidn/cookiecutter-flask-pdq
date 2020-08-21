@@ -1,22 +1,20 @@
 {{cookiecutter.project_name}}
 {{ '=' * cookiecutter.project_name|length }}
 
-{{cookiecutter.description}}
-
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20FPD-ff69b4.svg
      :target: https://github.com/jidn/cookiecutter-flask-postgresql-docker/
      :alt: Built with Cookiecutter FPD(Flask, PostgreSQL, Docker)
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
-{% if cookiecutter.open_source_license != "Not open source" %}
+{% if cookiecutter.license != "Not open source" %}
 
-:License: {{cookiecutter.open_source_license}}
+:License: {{cookiecutter.license}}
 {% endif %}
 
 ## Python and flask setup
 
-    $ python -m venv venv
+    $ python3 -m venv venv
     $ source venv/bin/activate
     $ pip install -r requirements/development.txt
 
@@ -32,6 +30,13 @@ Check if flask "Hello, World" is working.
 When adding additional packages, don't forget to update the docker web image.
 
     $ manage.py docker compose build web
+
+<!-- WLS2 note -->
+### WLS2
+> If using WSL2 and a browser from windows, use the 0.0.0.0 address and connect to the IP from windows browser.
+
+>     $ ./manage.py flask run -h 0.0.0.0 -p 5000
+>     $ ip show addr
 
 ## Database
 
@@ -77,8 +82,8 @@ Copy and modify, if needed, the files `config\scenario.json` and `docker\scenari
 File `scenarios/foo.py`
 
     import os
-    from application.app import create_app
-    from application.models import db, User
+    from {{cookiecutter.application_directory}}.app import create_app
+    from {{cookiecutter.application_directory}}.models import db, User
 
     app = create_app("developement")
 

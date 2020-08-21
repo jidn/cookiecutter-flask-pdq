@@ -1,8 +1,12 @@
 import logging
+import pathlib
+import urllib.request
 
 LOGGER = logging.getLogger()
 
 if __name__ == "__main__":
     print("Running post hook")
-    LOGGER.warning("Unable to create latest, best .gitignore")
-    # TODO https://github.com/github/gitignore/blob/master/Python.gitignore
+    filename, headers = urllib.request.urlretrieve(
+        "https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore",
+        pathlib.Path.cwd().joinpath(".gitignore"),
+    )

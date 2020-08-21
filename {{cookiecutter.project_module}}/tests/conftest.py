@@ -1,7 +1,7 @@
 import pytest
 
-from application.app import create_app
-from application.extensions import db
+from {{cookiecutter.application_directory}}.app import create_app
+from {{cookiecutter.application_directory}}.extensions import db
 
 
 @pytest.fixture

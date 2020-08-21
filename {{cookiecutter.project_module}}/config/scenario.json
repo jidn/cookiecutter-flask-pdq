@@ -5,6 +5,8 @@
     "POSTGRES_HOSTNAME": "localhost",
     "POSTGRES_PASSWORD": "postgres",
     "APPLICATION_DB":    "application",
+{% else %}
+    "APPLICATION_DB":    "application.sqlite",
 {% endif %}
     "FLASK_ENV":         "development",
     "FLASK_CONFIG":      "development"

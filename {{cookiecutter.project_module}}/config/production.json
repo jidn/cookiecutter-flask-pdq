@@ -6,6 +6,8 @@
     "POSTGRES_PORT":     "5432",
     "POSTGRES_PASSWORD": "super-secret-password",
     "APPLICATION_DB":    "application"
+{% else %}
+    "APPLICATION_DB":    "application.sqlite",
 {% endif %}
     "FLASK_ENV":         "production",
     "FLASK_CONFIG":      "production"
